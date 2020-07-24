@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sampleapi-deployment
+  namespace: demo-dev
+  labels:
+    app: sampleapi 
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sampleapi
+  template:
+    metadata:
+      labels:
+        app: sampleapi
+    spec:
+      containers:
+      - name: sampleapi
+        image: aswinh930/k8sampleapi:1.0
+        ports:
+        - containerPort: 80
